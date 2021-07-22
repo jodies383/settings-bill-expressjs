@@ -48,40 +48,26 @@ module.exports = function SettingsBill() {
     function actionsFor(type){
         const filteredActions = [];
 
-        // loop through all the entries in the action list 
         for (let index = 0; index < actionList.length; index++) {
             const action = actionList[index];
-            // check this is the type we are doing the total for 
             if (action.type === type) {
-                // add the action to the list
                 filteredActions.push(action);
             }
         }
 
         return filteredActions;
 
-        // return actionList.filter((action) => action.type === type);
     }
 
     function getTotal(type) {
         let total = 0;
-        // loop through all the entries in the action list 
         for (let index = 0; index < actionList.length; index++) {
             const action = actionList[index];
-            // check this is the type we are doing the total for 
             if (action.type === type) {
-                // if it is add the total to the list
                 total += action.cost;
             }
         }
         return total;
-
-        // the short way using reduce and arrow functions
-
-        // return actionList.reduce((total, action) => { 
-        //     let val = action.type === type ? action.cost : 0;
-        //     return total + val;
-        // }, 0);
     }
 
     function grandTotal() {
