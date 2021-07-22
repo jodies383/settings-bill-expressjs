@@ -1,0 +1,28 @@
+{
+  "name": "settings-bill-expressjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jodies383/settings-bill-expressjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jodies383/settings-bill-expressjs/issues"
+  },
+  "homepage": "https://github.com/jodies383/settings-bill-expressjs#readme",
+  "devDependencies": {
+    "mocha": "^9.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2"
+  }
+}
