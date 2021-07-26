@@ -6,6 +6,7 @@ const handlebarSetup = exphbs({
     layoutsDir: './views/layouts'
 });
 
+
 const bodyParser = require('body-parser');
 const SettingsBill = require('./settings-bill');
 
@@ -46,9 +47,10 @@ app.get('/actions', function (req, res) {
     res.render('actions', {actions: settingsBill.actions()});
 
 });
-app.get('/actions/:type', function (req, res) {
-    const actionType = req.params.actionType;
+app.get('/actions/:actiontype', function (req, res) {
+    const actionType = req.params.actiontype;
     res.render('actions', {actions: settingsBill.actionsFor(actionType)});
+
 });
 
 const PORT = process.env.PORT || 3011;
