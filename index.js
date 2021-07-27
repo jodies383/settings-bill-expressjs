@@ -1,3 +1,5 @@
+var moment = require('moment'); // require
+moment().format();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const handlebarSetup = exphbs({
@@ -21,9 +23,18 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
+    var addClass = ""
+  
+    if (settingsBill.hasReachedWarningLevel()) {
+        addClass = "warning"
+    }
+    if (settingsBill.hasReachedCriticalLevel()) {
+        addClass = "danger"
+    }
     res.render('index', {
         settings: settingsBill.getSettings(),
-        totals: settingsBill.totals()
+        totals: settingsBill.totals(),
+        totalSettings: addClass
     });
 });
 
@@ -44,12 +55,17 @@ app.post('/action', function (req, res) {
 });
 
 app.get('/actions', function (req, res) {
-    res.render('actions', {actions: settingsBill.actions()});
+    var newAction = settingsBill.actions();
+    newAction.forEach(element => {
+        element.newTime = moment(element.timestamp).fromNow()
+    });
+
+    res.render('actions', { actions: newAction });
 
 });
 app.get('/actions/:actiontype', function (req, res) {
     const actionType = req.params.actiontype;
-    res.render('actions', {actions: settingsBill.actionsFor(actionType)});
+    res.render('actions', { actions: settingsBill.actionsFor(actionType) });
 
 });
 
