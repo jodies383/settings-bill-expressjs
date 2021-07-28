@@ -35,7 +35,7 @@ module.exports = function SettingsBill() {
             cost = callCost;
         }
 
-        if (action === 'sms' || action === 'call') {
+        if (action === 'sms' || action === 'call' && cost > 0) {
             actionList.push({
                 type: action,
                 cost,

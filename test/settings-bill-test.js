@@ -7,8 +7,28 @@ describe('settings-bill', function(){
     const settingsBill = SettingsBill();
 
     it('should be able to record calls', function(){
+        settingsBill.setSettings({
+            smsCost: 2.35,
+            callCost: 3.35,
+            warningLevel: 30,
+            criticalLevel: 40
+        });
         settingsBill.recordAction('call');
+        
         assert.equal(1, settingsBill.actionsFor('call').length);
+    });
+    it('should be able to record sms', function(){
+        settingsBill.setSettings({
+            smsCost: 2.35,
+            callCost: 3.35,
+            warningLevel: 30,
+            criticalLevel: 40
+        });
+        settingsBill.recordAction('sms');
+        settingsBill.recordAction('sms');
+        settingsBill.recordAction('sms');
+
+        assert.equal(3, settingsBill.actionsFor('sms').length);
     });
 
     it('should be able to set the settings', function(){
