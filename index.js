@@ -1,4 +1,4 @@
-var moment = require('moment'); // require
+var moment = require('moment');
 moment().format();
 const express = require('express');
 const exphbs = require('express-handlebars');
